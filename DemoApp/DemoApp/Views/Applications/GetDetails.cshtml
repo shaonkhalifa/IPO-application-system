@@ -1,0 +1,63 @@
+﻿@model DemoApp.Data.DTO.IPOApplicationDTO
+@{
+    ViewData["Title"] = "GetDetails";
+}
+
+
+<div class="card shadow-lg mt-4">
+    <div class="card-header">
+        <h1 class="text-center text-muted">Applied IPO Details</h1>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col justify-content-center">
+
+
+                <div class="d-flex justify-content-between col-8 mb-1">
+                    <input type="hidden" asp-for="InstrumentId" class="form-control col-4" />
+                </div>
+                <div class="d-flex justify-content-between bg-light shadow-sm col-8 ms-4 me-4 mb-1">
+                    <label asp-for="Facevalue" class="col-form-label col-4">Name of the Company/Fund</label>
+                    <input type="text" readonly asp-for="InstrumentName" class="form-control col-4" />
+                </div>
+                <div class="d-flex justify-content-between bg-light shadow-sm col-8 ms-4 me-4 mb-1">
+                    <label asp-for="Facevalue" class="col-form-label col-4">Face Value (BDT)</label>
+                    <input type="text" readonly asp-for="Facevalue" class="form-control col-4" />
+                </div>
+                <div class="d-flex justify-content-between bg-light shadow-sm col-8 ms-4 me-4 mb-1">
+                    <label asp-for="Premium" class="col-form-label col-4">Premium (BDT)</label>
+                    <input type="text" readonly asp-for="Premium" class="form-control col-4" />
+                </div>
+                <div class="d-flex justify-content-between bg-light shadow-sm col-8 ms-4 me-4 mb-1">
+                    <label asp-for="IpoRate" class="col-form-label col-4">Offer Price per share (BDT)</label>
+                    <input type="text" readonly asp-for="IpoRate" class="form-control col-4" />
+                </div>
+                <div class="d-flex justify-content-between bg-light shadow-sm col-8 ms-4 me-4 mb-1">
+                    <label asp-for="MinimumAmount" class="col-form-label col-4">Total Application Amount (BDT)</label>
+                    <input type="text" readonly asp-for="MinimumAmount" class="form-control col-4" />
+                </div>
+                <div class="d-flex justify-content-between bg-light shadow-sm col-8 ms-4 me-4 mb-1">
+                    <label asp-for="StartDate" class="col-form-label col-4">Start Date</label>
+                    <input type="date" readonly asp-for="StartDate" class="form-control col-4" />
+                </div>
+                <div class="d-flex justify-content-between bg-light shadow-sm col-8 ms-4 me-4 mb-1">
+                    <label asp-for="EndDate" class="col-form-label  col-4">End Date</label>
+                    <input type="date" readonly asp-for="EndDate" class="form-control col-2" />
+                </div>
+                <br />
+
+                <div class="col-8 mb-1 mt-2 d-flex justify-content-between m-auto">
+                    <button type="button" class="w-100 btn btn-info btn-lg text-white shadow-sm">Download</button>&nbsp;&nbsp;
+                    <button type="button" class="w-100 btn btn-primary btn-lg text-white shadow-sm">Print</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="card-footer d-flex justify-content-end">
+        <a class="btn btn-link" asp-action="Index" asp-controller="Applications"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back To List</a>
+    </div>
+</div>
+
+

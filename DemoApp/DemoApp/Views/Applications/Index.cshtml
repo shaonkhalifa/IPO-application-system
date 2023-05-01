@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DemoApp.Data.Models.IpoApplicationDetails>
+@using DemoApp.Data;
+@using DemoApp.Models
+@using DemoApp.Data.Models
+@inject ApplicationDbContext DbContext
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="mt-4 card bg-light shadow-lg ">
+        <div class=" text-center fw-bold  mb-2 mt-2"> <h1 class="text-muted">Applied IPO LIST </h1></div>
+        <table class=" table table-bordered table-hover table-striped table-responsive-sm col-12 card-body shadow-sm ">
+            <thead class=" table-info ">
+                <tr>
+                    <th>SL.No</th>
+                    <th>Application No</th>
+                    <th>Company/Fund</th>
+                    <th>UserId</th>
+                    <th>User Name</th>
+                    <th>IsApproved</th>
+                    <th>IsExecuted</th>
+                    <th>Amount</th>
+                    <th>Applied Date</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody class=" ">
+                @{
+                    var counter = 1;
+
+                    foreach (var item in Model)
+                    {
+                        var user = DbContext.Users.FirstOrDefault(u => u.Id == item.UserId);
+                        var userName = user?.UserName ?? "";
+                        <tr>
+                            <td>@counter</td>
+                            <td>@item.IpoApplicationId</td>
+                            <td>@item.IpoInformation.InstrumentName</td>
+                            <td>@item.UserId</td>
+                            <td>@userName</td>
+                            <td>@(item.IsApproved ? "Yes" : "No")</td>
+                            <td>@(item.IsExecuted ? "Yes" : "No")</td>
+                            <td>@item.ApplicationAmount</td>
+                            <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                            <td>
+                                <a class="btn btn-sm btn-outline-primary shadow " asp-action="GetDetails" asp-controller="Applications" asp-route-id="@item.InstrumentId"><i class="fa fa-info-circle" aria-hidden="false"></i></a>
+
+                            </td>
+                        </tr>
+                        counter++;
+                    }
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
